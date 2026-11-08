@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Gérez votre compte et vos réservations Coivi.tn"
+    >
+
+    <title>Mon compte | Coivi.tn</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         HEADER
+         ===================================================== -->
+
+    <header>
+
+        <div class="container nav">
+
+            <a class="brand" href="index.html">
+
+                <img
+                    src="images/WhatsApp Image 2026-10-11 at 20.14.49.jpeg"
+                    alt="Logo Coivi.tn"
+                >
+
+                <span>Coivi.tn</span>
+
+            </a>
+
+
+            <button
+                class="menu-btn"
+                aria-label="Ouvrir le menu"
+            >
+                ☰
+            </button>
+
+
+            <nav class="links">
+
+                <a href="index.html">
+                    Accueil
+                </a>
+
+                <a href="services.html">
+                    Services
+                </a>
+
+                <a href="service-detail.html?service=proposer">
+                    Proposer un trajet
+                </a>
+
+                <a href="a-propos.html">
+                    À propos
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+                <a href="panier.html">
+    🛒 Panier
+</a>
+                <a class="active" href="compte.html">
+                    Mon compte
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <main class="account-page">
+
+
+        <!-- =====================================================
+             PAGE TITLE
+             ===================================================== -->
+
+        <section class="account-hero">
+
+            <div class="container">
+
+                <span class="section-label">
+                    👤 ESPACE PERSONNEL
+                </span>
+
+                <h1>
+                    Mon compte
+                </h1>
+
+                <p>
+                    Gérez votre profil et retrouvez toutes
+                    vos réservations Coivi.tn.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             ACCOUNT
+             ===================================================== -->
+
+        <section class="account-section">
+
+            <div class="container">
+
+
+                <!-- Loading -->
+
+                <div
+                    id="account-loading"
+                    class="account-loading"
+                >
+                    Chargement de votre compte...
+                </div>
+
+
+                <!-- Main account content -->
+
+                <div
+                    id="account-content"
+                    style="display: none;"
+                >
+
+
+                    <!-- PROFILE CARD -->
+
+                    <div class="account-profile-card">
+
+                        <div class="account-profile-top">
+
+                            <div class="account-avatar">
+                                👤
+                            </div>
+
+
+                            <div class="account-profile-title">
+
+                                <span class="account-small-label">
+                                    MON PROFIL
+                                </span>
+
+                                <h2>
+                                    Bienvenue sur Coivi.tn
+                                </h2>
+
+                                <p>
+                                    Retrouvez vos informations personnelles
+                                    et vos réservations.
+                                </p>
+
+                            </div>
+
+
+                            <span class="account-connected-badge">
+                                ● Connecté
+                            </span>
+
+                        </div>
+
+
+                        <div class="account-info-grid">
+
+
+                            <div class="account-info-card">
+
+                                <div class="account-info-icon">
+                                    👤
+                                </div>
+
+                                <div>
+
+                                    <span>
+                                        Nom
+                                    </span>
+
+                                    <strong id="account-name"></strong>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="account-info-card">
+
+                                <div class="account-info-icon">
+                                    ✉️
+                                </div>
+
+                                <div>
+
+                                    <span>
+                                        Adresse e-mail
+                                    </span>
+
+                                    <strong id="account-email"></strong>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         RESERVATIONS
+                         ================================================= -->
+
+                    <div
+                        id="my-reservations"
+                        class="account-reservations"
+                    >
+
+                        <div class="account-section-heading">
+
+                            <div>
+
+                                <span class="section-label">
+                                    🚗 MES TRAJETS
+                                </span>
+
+                                <h2>
+                                    Mes réservations
+                                </h2>
+
+                                <p>
+                                    Consultez l'historique et le statut
+                                    de vos trajets réservés.
+                                </p>
+
+                            </div>
+
+
+                            <span class="account-reservation-badge">
+                                Réservations
+                            </span>
+
+                        </div>
+
+
+                        <p
+                            id="reservations-loading"
+                            class="reservations-loading"
+                        >
+                            Chargement de vos réservations...
+                        </p>
+
+
+                        <div
+                            id="reservations-list"
+                            class="account-reservations-list"
+                        ></div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         ACTIONS
+                         ================================================= -->
+
+                    <div class="account-actions">
+
+                        <a
+                            href="index.html"
+                            class="account-home-button"
+                        >
+                            ← Retour à l'accueil
+                        </a>
+
+
+                        <button
+                            type="button"
+                            id="logout-button"
+                            class="account-logout-button"
+                        >
+                            Se déconnecter
+                        </button>
+
+                    </div>
+
+
+                </div>
+
+
+                <p
+                    id="account-message"
+                    class="account-message"
+                ></p>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <footer class="footer">
+
+        <div class="container footer-grid">
+
+
+            <div class="footer-brand">
+
+                <a
+                    class="brand footer-logo"
+                    href="index.html"
+                >
+
+                    <img
+                        src="images/WhatsApp Image 2026-10-11 at 20.14.49.jpeg"
+                        alt="Logo Coivi.tn"
+                    >
+
+                    <span>
+                        Coivi.tn
+                    </span>
+
+                </a>
+
+
+                <p class="small">
+                    Partagez la route.<br>
+                    Partagez les frais.<br>
+                    Voyagez autrement.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Navigation
+                </strong>
+
+                <p class="small">
+
+                    <a href="service-detail.html?service=interville">
+                        Trouver un trajet
+                    </a>
+
+                    <br>
+
+                    <a href="service-detail.html?service=quotidien">
+                        Trajet quotidien
+                    </a>
+
+                    <br>
+
+                    <a href="service-detail.html?service=proposer">
+                        Proposer un trajet
+                    </a>
+
+                    <br>
+
+                    <a href="a-propos.html">
+                        À propos
+                    </a>
+
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Coivi.tn
+                </strong>
+
+                <p class="small">
+                    Sousse Khzema, Tunisie<br>
+                    73 000 000<br>
+                    support@coivi.com
+                </p>
+
+            </div>
+
+
+            <div class="footer-country">
+
+                <span>
+                    🇹🇳
+                </span>
+
+                <strong>
+                    Made for Tunisia
+                </strong>
+
+            </div>
+
+
+        </div>
+
+    </footer>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="supabase-client.js"></script>
+
+    <script src="supabase-shop.js"></script>
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>

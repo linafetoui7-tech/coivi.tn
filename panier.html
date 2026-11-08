@@ -1,0 +1,981 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Panier et confirmation de réservation Coivi.tn">
+    <title>Panier | Coivi.tn</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .cart-page {
+            min-height: 650px;
+            padding: 70px 0 100px;
+            background: #f6fbff;
+        }
+
+        .cart-container {
+            width: min(1050px, 90%);
+            margin: 0 auto;
+        }
+
+        .cart-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .cart-card,
+        .cart-summary {
+            background: #fff;
+            border: 1px solid #dbeaf5;
+            border-radius: 22px;
+            padding: 30px;
+            box-shadow: 0 15px 40px rgba(7, 55, 99, 0.08);
+        }
+
+        .cart-label {
+            display: inline-block;
+            padding: 8px 14px;
+            border-radius: 30px;
+            background: #eef8ff;
+            color: #0878d1;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: .5px;
+            margin-bottom: 15px;
+        }
+
+        .cart-card h2,
+        .cart-summary h2 {
+            color: #073763;
+            margin-top: 0;
+        }
+
+        .availability {
+            display: inline-block;
+            background: #effcf4;
+            color: #0a9b4c;
+            border: 1px solid #bdebcf;
+            padding: 8px 13px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .cart-title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .selected-trip {
+            margin-top: 25px;
+            padding: 25px;
+            border-radius: 18px;
+            border: 1px solid #cfe8f4;
+            background: linear-gradient(135deg, #f8fcff, #f5fff9);
+        }
+
+        .trip-route {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #dceaf2;
+        }
+
+        .trip-icon {
+            width: 52px;
+            height: 52px;
+            display: grid;
+            place-items: center;
+            border-radius: 14px;
+            background: #eaf7ff;
+            font-size: 24px;
+        }
+
+        .trip-route small {
+            color: #718096;
+        }
+
+        .trip-route h3 {
+            margin: 5px 0 0;
+            color: #073763;
+            font-size: 24px;
+        }
+
+        .trip-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .trip-info {
+            padding: 15px;
+            background: #fff;
+            border: 1px solid #deebf4;
+            border-radius: 13px;
+        }
+
+        .trip-info span {
+            display: block;
+            color: #778899;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+
+        .trip-info strong {
+            color: #073763;
+        }
+
+        .payment-area {
+            margin-top: 28px;
+            padding-top: 28px;
+            border-top: 1px solid #dceaf2;
+        }
+
+        .payment-area label {
+            display: block;
+            font-weight: 700;
+            color: #073763;
+            margin: 18px 0 8px;
+        }
+
+        .payment-area select {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #cbdfea;
+            border-radius: 10px;
+            background: #fff;
+            font: inherit;
+        }
+
+        .payment-notice {
+            margin-top: 12px;
+            padding: 13px;
+            border-radius: 10px;
+            background: #fff9ed;
+            border: 1px solid #f0d39a;
+            color: #8a6116;
+            font-size: 13px;
+        }
+
+        .summary-line {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 20px 0;
+            color: #617184;
+        }
+
+        .summary-line strong {
+            color: #073763;
+        }
+
+        .summary-total {
+            border-top: 1px solid #dceaf2;
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        .summary-total strong:last-child {
+            color: #0aae55;
+            font-size: 25px;
+        }
+
+        #confirm-reservation {
+            width: 100%;
+            border: 0;
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 11px;
+            background: #20c76a;
+            color: #fff;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 10px 22px rgba(32, 199, 106, .20);
+        }
+
+        #confirm-reservation:hover {
+            transform: translateY(-1px);
+        }
+
+        #confirm-reservation:disabled {
+            opacity: .6;
+            cursor: not-allowed;
+        }
+
+        .continue-link {
+            display: block;
+            text-align: center;
+            margin-top: 18px;
+            color: #0878d1;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        #cart-message {
+            margin-top: 15px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .empty-cart {
+            background: #fff;
+            padding: 50px;
+            border-radius: 20px;
+            border: 1px solid #dbeaf5;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(7, 55, 99, .07);
+        }
+
+        .empty-cart h2 {
+            color: #073763;
+        }
+
+        .empty-cart a {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 13px 22px;
+            border-radius: 10px;
+            background: #20c76a;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        @media (max-width: 800px) {
+            .cart-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .trip-info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container nav">
+
+            <a class="brand" href="index.html">
+                <img
+                    src="images/WhatsApp Image 2026-10-11 at 20.14.49.jpeg"
+                    alt="Logo Coivi.tn">
+                <span>Coivi.tn</span>
+            </a>
+
+            <button class="menu-btn" aria-label="Ouvrir le menu">☰</button>
+
+            <nav class="links">
+                <a href="index.html">Accueil</a>
+                <a href="services.html">Services</a>
+                <a href="service-detail.html?service=proposer">Proposer un trajet</a>
+                <a href="a-propos.html">À propos</a>
+                <a href="contact.html">Contact</a>
+
+                <a class="active" href="panier.html">🛒 Panier</a>
+
+                <span id="auth-nav">
+                    <a href="login.html">Connexion</a>
+                    <a href="signup.html">Créer un compte</a>
+                </span>
+            </nav>
+
+        </div>
+    </header>
+
+
+    <main>
+
+        <!-- HERO -->
+        <section class="page-hero">
+            <div class="container">
+
+                <span class="section-label">🛒 VOTRE PANIER</span>
+
+                <h1>Finalisez votre réservation</h1>
+
+                <p>
+                    Vérifiez les informations de votre trajet avant de confirmer.
+                </p>
+
+            </div>
+        </section>
+
+
+        <!-- PANIER -->
+        <section class="cart-page">
+
+            <div class="cart-container">
+
+                <!-- Shown when there is a selected trip -->
+                <div id="cart-content" class="cart-grid">
+
+                    <!-- LEFT -->
+                    <div class="cart-card">
+
+                        <div class="cart-title-row">
+
+                            <div>
+                                <span class="cart-label">
+                                    🚗 TRAJET SÉLECTIONNÉ
+                                </span>
+
+                                <h2>Votre réservation</h2>
+
+                                <p>
+                                    Voici le trajet que vous avez sélectionné.
+                                </p>
+                            </div>
+
+                            <span class="availability">
+                                ✓ Disponible
+                            </span>
+
+                        </div>
+
+
+                        <div class="selected-trip">
+
+                            <div class="trip-route">
+
+                                <div class="trip-icon">🚗</div>
+
+                                <div>
+                                    <small>Votre trajet</small>
+
+                                    <h3>
+                                        <span id="cart-departure">—</span>
+                                        →
+                                        <span id="cart-destination">—</span>
+                                    </h3>
+                                </div>
+
+                            </div>
+
+
+                            <div class="trip-info-grid">
+
+                                <div class="trip-info">
+                                    <span>📅 Date</span>
+                                    <strong id="cart-date">—</strong>
+                                </div>
+
+                                <div class="trip-info">
+                                    <span>🕒 Heure</span>
+                                    <strong id="cart-time">—</strong>
+                                </div>
+
+                                <div class="trip-info">
+                                    <span>👤 Conducteur</span>
+                                    <strong id="cart-driver">—</strong>
+                                </div>
+
+                                <div class="trip-info">
+                                    <span>💺 Passagers</span>
+                                    <strong id="cart-seats">—</strong>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="payment-area">
+
+                            <span class="cart-label">
+                                💳 PAIEMENT
+                            </span>
+
+                            <h2>Mode de paiement</h2>
+
+                            <p>
+                                Choisissez votre mode de paiement pour cette démonstration.
+                            </p>
+
+                            <label for="cart-payment">
+                                Mode de paiement
+                            </label>
+
+                            <select id="cart-payment">
+                                <option value="card">
+                                    Carte bancaire — Simulation
+                                </option>
+
+                                <option value="cash">
+                                    Paiement au conducteur — Simulation
+                                </option>
+                            </select>
+
+                            <div class="payment-notice">
+                                🔒 Aucun paiement réel ne sera effectué.
+                                Cette étape est uniquement une simulation pour le projet Coivi.tn.
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- RIGHT SUMMARY -->
+                    <aside class="cart-summary">
+
+                        <span class="cart-label">
+                            RÉCAPITULATIF
+                        </span>
+
+                        <h2>Résumé</h2>
+
+                        <div class="summary-line">
+                            <span>Prix par passager</span>
+                            <strong id="cart-price">0.00 DT</strong>
+                        </div>
+
+                        <div class="summary-line">
+                            <span>Nombre de places</span>
+                            <strong id="cart-summary-seats">0</strong>
+                        </div>
+
+                        <div class="summary-line summary-total">
+                            <strong>Total</strong>
+                            <strong id="cart-total">0.00 DT</strong>
+                        </div>
+
+                        <small>Simulation</small>
+
+                        <button
+                            type="button"
+                            id="confirm-reservation">
+                            Confirmer la réservation →
+                        </button>
+
+                        <a
+                            href="service-detail.html?service=interville"
+                            class="continue-link">
+                            ← Continuer mes recherches
+                        </a>
+
+                        <p id="cart-message"></p>
+
+                    </aside>
+
+                </div>
+
+
+                <!-- EMPTY PANIER -->
+                <div id="empty-cart" class="empty-cart" style="display:none;">
+
+                    <div style="font-size:45px;">🛒</div>
+
+                    <h2>Votre panier est vide</h2>
+
+                    <p>
+                        Sélectionnez d'abord un trajet pour pouvoir effectuer une réservation.
+                    </p>
+
+                    <a href="service-detail.html?service=interville">
+                        Trouver un trajet
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <div class="container footer-grid">
+
+            <div>
+
+                <a class="brand" href="index.html">
+                    <img
+                        src="images/WhatsApp Image 2026-10-11 at 20.14.49.jpeg"
+                        alt="Logo Coivi.tn">
+                    <span>Coivi.tn</span>
+                </a>
+
+                <p class="small">
+                    Partagez la route.<br>
+                    Partagez les frais.<br>
+                    Voyagez autrement.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <strong>Navigation</strong>
+
+                <p class="small">
+                    Trouver un trajet<br>
+                    Trajet quotidien<br>
+                    Proposer un trajet<br>
+                    À propos
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <strong>Coivi.tn</strong>
+
+                <p class="small">
+                    Sousse Khzema, Tunisie<br>
+                    73 000 000<br>
+                    support@coivi.com
+                </p>
+
+            </div>
+
+
+            <div class="footer-country">
+                <span>TN</span>
+                <strong>Made for Tunisia</strong>
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- SUPABASE -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-client.js"></script>
+    <script src="supabase-shop.js"></script>
+    <script src="script.js"></script>
+
+
+    <!-- PANIER LOGIC -->
+<script>
+
+document.addEventListener("DOMContentLoaded", async function () {
+
+    // ==========================================
+    // ELEMENTS
+    // ==========================================
+
+    const cartContent =
+        document.getElementById("cart-content");
+
+    const emptyCart =
+        document.getElementById("empty-cart");
+
+    const confirmButton =
+        document.getElementById("confirm-reservation");
+
+    const message =
+        document.getElementById("cart-message");
+
+    const paymentSelect =
+        document.getElementById("cart-payment");
+
+
+    // ==========================================
+    // CHECK USER LOGIN
+    // ==========================================
+
+    const {
+        data: userData,
+        error: userError
+    } = await sb.auth.getUser();
+
+
+    if (userError || !userData.user) {
+
+        localStorage.removeItem("coiviPanier");
+
+        cartContent.style.display = "none";
+        emptyCart.style.display = "block";
+
+        emptyCart.innerHTML = `
+            <div style="font-size:45px;">🔒</div>
+
+            <h2>
+                Connectez-vous pour accéder à votre panier
+            </h2>
+
+            <p>
+                Vous devez être connecté à votre compte
+                pour consulter et confirmer vos réservations.
+            </p>
+
+            <a href="login.html">
+                Se connecter
+            </a>
+        `;
+
+        return;
+    }
+
+
+    // ==========================================
+    // GET PANIER
+    // ==========================================
+
+    const savedPanier =
+        localStorage.getItem("coiviPanier");
+
+
+    if (!savedPanier) {
+
+        cartContent.style.display = "none";
+        emptyCart.style.display = "block";
+
+        return;
+    }
+
+
+    let panier;
+
+
+    try {
+
+        panier =
+            JSON.parse(savedPanier);
+
+    } catch (error) {
+
+        console.error(
+            "Erreur lecture panier:",
+            error
+        );
+
+        localStorage.removeItem("coiviPanier");
+
+        cartContent.style.display = "none";
+        emptyCart.style.display = "block";
+
+        return;
+    }
+
+
+    // ==========================================
+    // VERIFY PANIER
+    // ==========================================
+
+    if (
+        !panier ||
+        !panier.rideId ||
+        !panier.departure ||
+        !panier.destination
+    ) {
+
+        console.error(
+            "Panier invalide:",
+            panier
+        );
+
+        localStorage.removeItem("coiviPanier");
+
+        cartContent.style.display = "none";
+        emptyCart.style.display = "block";
+
+        return;
+    }
+
+
+    // ==========================================
+    // DISPLAY TRIP
+    // ==========================================
+
+    document.getElementById(
+        "cart-departure"
+    ).textContent =
+        panier.departure;
+
+
+    document.getElementById(
+        "cart-destination"
+    ).textContent =
+        panier.destination;
+
+
+    document.getElementById(
+        "cart-driver"
+    ).textContent =
+        panier.driverName ||
+        "Conducteur Coivi";
+
+
+    document.getElementById(
+        "cart-seats"
+    ).textContent =
+        `${panier.seats} ${
+            Number(panier.seats) > 1
+                ? "places"
+                : "place"
+        }`;
+
+
+    document.getElementById(
+        "cart-summary-seats"
+    ).textContent =
+        panier.seats;
+
+
+    // ==========================================
+    // PRICE
+    // ==========================================
+
+    const price =
+        Number(
+            panier.pricePerPassenger || 0
+        );
+
+
+    const total =
+        Number(
+            panier.total ||
+            (
+                price *
+                Number(panier.seats)
+            )
+        );
+
+
+    document.getElementById(
+        "cart-price"
+    ).textContent =
+        `${price.toFixed(2)} DT`;
+
+
+    document.getElementById(
+        "cart-total"
+    ).textContent =
+        `${total.toFixed(2)} DT`;
+
+
+    // ==========================================
+    // DATE AND TIME
+    // ==========================================
+
+    if (panier.departureTime) {
+
+        const departureDate =
+            new Date(
+                panier.departureTime
+            );
+
+
+        document.getElementById(
+            "cart-date"
+        ).textContent =
+            departureDate.toLocaleDateString(
+                "fr-FR",
+                {
+                    day: "2-digit",
+                    month: "short",
+                    year: "numeric"
+                }
+            );
+
+
+        document.getElementById(
+            "cart-time"
+        ).textContent =
+            departureDate.toLocaleTimeString(
+                "fr-FR",
+                {
+                    hour: "2-digit",
+                    minute: "2-digit"
+                }
+            );
+    }
+
+
+    // ==========================================
+    // PAYMENT METHOD
+    // ==========================================
+
+    if (panier.paymentMethod) {
+
+        paymentSelect.value =
+            panier.paymentMethod;
+    }
+
+
+    // ==========================================
+    // CONFIRM RESERVATION
+    // ==========================================
+
+    confirmButton.addEventListener(
+        "click",
+        async function () {
+
+            message.textContent = "";
+
+            confirmButton.disabled = true;
+
+            confirmButton.textContent =
+                "Confirmation en cours...";
+
+
+            // ----------------------------------
+            // CHECK USER AGAIN
+            // ----------------------------------
+
+            const {
+                data: currentUserData,
+                error: currentUserError
+            } = await sb.auth.getUser();
+
+
+            if (
+                currentUserError ||
+                !currentUserData.user
+            ) {
+
+                message.style.color =
+                    "#c0392b";
+
+                message.textContent =
+                    "Vous devez être connecté pour confirmer.";
+
+                confirmButton.disabled =
+                    false;
+
+                confirmButton.textContent =
+                    "Confirmer la réservation →";
+
+                return;
+            }
+
+
+            // ----------------------------------
+            // CREATE RESERVATION
+            // ----------------------------------
+
+            
+const {
+    data: reservationData,
+    error: reservationError
+} = await sb.rpc(
+    "create_reservation",
+    {
+        p_ride_id: Number(panier.rideId),
+        p_seats: Number(panier.seats),
+        p_payment_method: paymentSelect.value
+    }
+);
+
+
+
+            if (reservationError) {
+
+                console.error(
+                    "Erreur réservation:",
+                    reservationError
+                );
+
+                message.style.color =
+                    "#c0392b";
+
+                message.textContent =
+                    "Erreur lors de la réservation : " +
+                    reservationError.message;
+
+                confirmButton.disabled =
+                    false;
+
+                confirmButton.textContent =
+                    "Confirmer la réservation →";
+
+                return;
+            }
+
+
+            // ==================================
+            // SAVE PAYMENT METHOD
+            // ==================================
+
+           
+const { error: paymentError } = await sb
+    .from("reservations")
+    .update({
+        payment_method: paymentSelect.value
+    })
+   .eq("id", reservationData);
+
+
+
+            if (paymentError) {
+
+                console.error(
+                    "Erreur enregistrement paiement:",
+                    paymentError
+                );
+
+                message.style.color =
+                    "#c0392b";
+
+                message.textContent =
+                    "La réservation a été créée, mais le mode de paiement n'a pas pu être enregistré.";
+
+                confirmButton.disabled =
+                    false;
+
+                confirmButton.textContent =
+                    "Confirmer la réservation →";
+
+                return;
+            }
+
+
+            // ==================================
+            // SUCCESS
+            // ==================================
+
+            localStorage.removeItem(
+                "coiviPanier"
+            );
+
+
+            message.style.color =
+                "#0a9b4c";
+
+
+            message.textContent =
+                "✓ Demande de réservation envoyée avec succès !";
+
+
+            confirmButton.textContent =
+                "✓ Réservation envoyée";
+
+
+            setTimeout(function () {
+
+                window.location.href =
+                    "compte.html";
+
+            }, 1200);
+
+        }
+    );
+
+});
+
+</script>
+
+</body>
+
+</html>

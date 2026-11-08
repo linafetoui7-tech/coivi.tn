@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Tableau de bord administrateur Coivi.tn">
+
+    <title>Administration | Coivi.tn</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .admin-page {
+            min-height: 700px;
+            background: #f6fbff;
+            padding: 60px 0 100px;
+        }
+
+        .admin-wrapper {
+            width: min(1150px, 90%);
+            margin: 0 auto;
+        }
+
+        .admin-hero {
+            margin-bottom: 35px;
+        }
+
+        .admin-label {
+            display: inline-block;
+            padding: 8px 14px;
+            border-radius: 30px;
+            background: #eef8ff;
+            color: #0878d1;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: .5px;
+            margin-bottom: 12px;
+        }
+
+        .admin-hero h1 {
+            color: #073763;
+            font-size: 38px;
+            margin: 0 0 10px;
+        }
+
+        .admin-hero p {
+            color: #617184;
+            margin: 0;
+        }
+
+        #admin-loading {
+            background: white;
+            border: 1px solid #dbeaf5;
+            border-radius: 16px;
+            padding: 25px;
+            color: #617184;
+            box-shadow: 0 10px 30px rgba(7, 55, 99, .06);
+        }
+
+        .admin-section {
+            background: white;
+            border: 1px solid #dbeaf5;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 40px rgba(7, 55, 99, .07);
+        }
+
+        .admin-section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e2edf5;
+        }
+
+        .admin-section-icon {
+            width: 50px;
+            height: 50px;
+            display: grid;
+            place-items: center;
+            border-radius: 14px;
+            background: #eef8ff;
+            font-size: 22px;
+        }
+
+        .admin-section-header h2 {
+            color: #073763;
+            margin: 0 0 5px;
+        }
+
+        .admin-section-header p {
+            color: #718096;
+            margin: 0;
+            font-size: 14px;
+        }
+
+        #admin-rides,
+        #admin-reservations {
+            display: grid;
+            gap: 15px;
+        }
+
+        #admin-rides .ride-card,
+        #admin-reservations .reservation-card {
+            padding: 20px;
+            border: 1px solid #dceaf2;
+            border-radius: 15px;
+            background: #fafdff;
+        }
+
+        #admin-rides h3,
+        #admin-reservations h3 {
+            color: #073763;
+            margin-top: 0;
+        }
+
+        #admin-rides p,
+        #admin-reservations p {
+            color: #617184;
+            margin: 8px 0;
+        }
+
+        .admin-status {
+            width: 100%;
+            max-width: 230px;
+            margin-top: 10px;
+            padding: 11px 13px;
+            border-radius: 9px;
+            border: 1px solid #cbdfea;
+            background: white;
+            font: inherit;
+            color: #073763;
+        }
+
+        .admin-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .admin-home-button {
+            display: inline-block;
+            padding: 13px 22px;
+            border-radius: 10px;
+            background: #0878d1;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        #admin-logout-button {
+            border: 0;
+            padding: 13px 22px;
+            border-radius: 10px;
+            background: #073763;
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        #admin-message {
+            margin-top: 20px;
+            color: #0a9b4c;
+            font-weight: 700;
+        }
+
+        @media (max-width: 750px) {
+            .admin-hero h1 {
+                font-size: 30px;
+            }
+
+            .admin-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+
+        <div class="container nav">
+
+            <a class="brand" href="index.html">
+
+                <img
+                    src="images/WhatsApp Image 2026-10-11 at 20.14.49.jpeg"
+                    alt="Logo Coivi.tn">
+
+                <span>Coivi.tn</span>
+
+            </a>
+
+
+            <button
+                class="menu-btn"
+                aria-label="Ouvrir le menu">
+                ☰
+            </button>
+
+
+            <nav class="links">
+
+                <a href="index.html">
+                    Accueil
+                </a>
+
+                <a href="services.html">
+                    Services
+                </a>
+
+                <a href="service-detail.html?service=proposer">
+                    Proposer un trajet
+                </a>
+
+                <a href="a-propos.html">
+                    À propos
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+                <a href="panier.html">
+                    🛒 Panier
+                </a>
+
+                <a
+                    class="active"
+                    href="admin.html">
+                    ⚙️ Administration
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- MAIN -->
+    <main>
+
+        <!-- HERO -->
+        <section class="page-hero">
+
+            <div class="container">
+
+                <span class="section-label">
+                    ⚙️ ESPACE ADMINISTRATEUR
+                </span>
+
+                <h1>
+                    Tableau de bord
+                </h1>
+
+                <p>
+                    Gérez les trajets et les réservations
+                    de la communauté Coivi.tn.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ADMIN -->
+        <section class="admin-page">
+
+            <div class="admin-wrapper">
+
+                <div class="admin-hero">
+
+                    <span class="admin-label">
+                        ADMINISTRATION
+                    </span>
+
+                    <h1>
+                        Gestion de Coivi.tn
+                    </h1>
+
+                    <p>
+                        Consultez les trajets disponibles et
+                        gérez les demandes de réservation.
+                    </p>
+
+                </div>
+
+
+                <!-- ACCESS CHECK -->
+                <p id="admin-loading">
+                    🔐 Vérification des droits administrateur...
+                </p>
+
+
+                <!-- ADMIN CONTENT -->
+                <div
+                    id="admin-content"
+                    style="display: none;">
+
+
+                    <!-- RIDES -->
+                    <section class="admin-section">
+
+                        <div class="admin-section-header">
+
+                            <div class="admin-section-icon">
+                                🚗
+                            </div>
+
+                            <div>
+
+                                <h2>
+                                    Gestion des trajets
+                                </h2>
+
+                                <p>
+                                    Consultez les trajets publiés
+                                    sur Coivi.tn.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div id="admin-rides">
+
+                            Chargement des trajets...
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- RESERVATIONS -->
+                    <section class="admin-section">
+
+                        <div class="admin-section-header">
+
+                            <div class="admin-section-icon">
+                                📋
+                            </div>
+
+                            <div>
+
+                                <h2>
+                                    Gestion des réservations
+                                </h2>
+
+                                <p>
+                                    Vérifiez et modifiez le statut
+                                    des réservations.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div id="admin-reservations">
+
+                            Chargement des réservations...
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- ACTIONS -->
+                    <div class="admin-actions">
+
+                        <a
+                            href="index.html"
+                            class="admin-home-button">
+
+                            ← Retour à l'accueil
+
+                        </a>
+
+
+                        <button
+                            type="button"
+                            id="admin-logout-button">
+
+                            Se déconnecter
+
+                        </button>
+
+                    </div>
+
+
+                    <p id="admin-message"></p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <div class="container footer-grid">
+
+            <div>
+
+                <a class="brand" href="index.html">
+
+                    <img
+                        src="images/WhatsApp Image 2026-10-11 at 20.14.49.jpeg"
+                        alt="Logo Coivi.tn">
+
+                    <span>Coivi.tn</span>
+
+                </a>
+
+                <p class="small">
+                    Partagez la route.<br>
+                    Partagez les frais.<br>
+                    Voyagez autrement.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <strong>Navigation</strong>
+
+                <p class="small">
+                    Trouver un trajet<br>
+                    Trajet quotidien<br>
+                    Proposer un trajet<br>
+                    À propos
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <strong>Coivi.tn</strong>
+
+                <p class="small">
+                    Sousse Khzema, Tunisie<br>
+                    73 000 000<br>
+                    support@coivi.com
+                </p>
+
+            </div>
+
+
+            <div class="footer-country">
+
+                <span>TN</span>
+
+                <strong>
+                    Made for Tunisia
+                </strong>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- SUPABASE -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="supabase-client.js"></script>
+
+    <script src="supabase-shop.js"></script>
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Connexion | Coivi.tn</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="auth-page">
+
+        <div class="auth-container">
+
+            <h1>Connexion</h1>
+
+            <p>
+                Connectez-vous à votre compte Coivi.tn.
+            </p>
+
+            <form id="login-form">
+
+                <label for="login-email">Adresse e-mail</label>
+                <input
+                    type="email"
+                    id="login-email"
+                    placeholder="exemple@email.com"
+                    required
+                >
+
+                <label for="login-password">Mot de passe</label>
+                <input
+                    type="password"
+                    id="login-password"
+                    placeholder="Votre mot de passe"
+                    required
+                >
+
+                <button type="submit">
+                    Se connecter
+                </button>
+
+            </form>
+
+            <p id="login-message"></p>
+
+            <p>
+                Vous n'avez pas encore de compte ?
+                <a href="signup.html">Créer un compte</a>
+            </p>
+
+        </div>
+
+    </main>
+
+    <!-- Supabase JavaScript library -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="supabase-client.js"></script>
+
+    <script src="supabase-shop.js"></script>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

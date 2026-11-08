@@ -1,0 +1,1089 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description"
+        content="Découvrez et réservez vos trajets avec Coivi.tn">
+
+    <title>Service | Coivi.tn</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         HEADER
+         ===================================================== -->
+
+    <header>
+
+        <div class="container nav">
+
+            <a class="brand" href="index.html">
+
+                <img
+                    src="images/WhatsApp Image 2026-10-11 at 20.14.49.jpeg"
+                    alt="Logo Coivi.tn">
+
+                <span>Coivi.tn</span>
+
+            </a>
+
+            <button class="menu-btn" aria-label="Ouvrir le menu">
+                ☰
+            </button>
+
+            <nav class="links">
+
+                <a href="index.html">
+                    Accueil
+                </a>
+
+                <a id="nav-services" href="services.html">
+    Services
+</a>
+
+<a id="nav-proposer" href="service-detail.html?service=proposer">
+    Proposer un trajet
+</a>
+                <a href="a-propos.html">
+                    À propos
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+
+<a href="panier.html">
+    🛒 Panier
+</a>
+
+<span id="auth-nav">
+    <a href="login.html">Connexion</a>
+    <a href="signup.html">Créer un compte</a>
+</span>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <!-- =====================================================
+             PAGE HERO
+             ===================================================== -->
+
+        <section class="page-hero">
+
+            <div class="container">
+
+                <span class="section-label" id="service-label">
+                    COIVI.TN
+                </span>
+
+                <h1 id="service-title">
+                    Nos services
+                </h1>
+
+                <p id="service-subtitle">
+                    Trouvez le trajet qui vous convient.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             SERVICE 1 — TRAJET ENTRE VILLES
+             ===================================================== -->
+
+        <section
+            id="interville-service"
+            class="section service-detail-section"
+            style="display:none;">
+
+            <div class="container">
+
+
+                <!-- INTRO -->
+
+                <div class="service-intro-grid">
+
+                    <div class="service-intro-image">
+
+                        <img
+                            src="images/covoiturage-tunisie.png"
+                            alt="Trajet entre villes avec Coivi.tn">
+
+                    </div>
+
+
+                    <div class="service-intro-content">
+
+                        <span class="tag">
+                            🚗 Trajet interurbain
+                        </span>
+
+                        <h2>
+                            Voyagez facilement entre les villes tunisiennes
+                        </h2>
+
+                        <p>
+                            Le service <strong>Trajet entre villes</strong>
+                            vous permet de trouver un conducteur effectuant
+                            le même trajet que vous.
+                        </p>
+
+                        <p>
+                            Choisissez votre ville de départ, votre destination
+                            et votre date de voyage, puis consultez les trajets
+                            disponibles et réservez directement votre place.
+                        </p>
+
+
+                        <div class="service-benefits">
+
+                            <span>✓ Recherche simple</span>
+
+                            <span>✓ Prix par passager</span>
+
+                            <span>✓ Places disponibles</span>
+
+                            <span>✓ Réservation en ligne</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- COMMENT ÇA MARCHE -->
+
+                <div class="service-process">
+
+                    <div class="section-heading-left">
+
+                        <span class="section-label">
+                            COMMENT ÇA MARCHE ?
+                        </span>
+
+                        <h2>
+                            Réservez votre trajet en quelques étapes
+                        </h2>
+
+                    </div>
+
+
+                    <div class="process-grid">
+
+                        <div class="process-card">
+
+                            <span class="process-number">
+                                01
+                            </span>
+
+                            <h3>
+                                Recherchez
+                            </h3>
+
+                            <p>
+                                Indiquez votre départ, votre destination
+                                et la date souhaitée.
+                            </p>
+
+                        </div>
+
+
+                        <div class="process-card">
+
+                            <span class="process-number">
+                                02
+                            </span>
+
+                            <h3>
+                                Choisissez
+                            </h3>
+
+                            <p>
+                                Consultez les conducteurs, horaires,
+                                prix et places disponibles.
+                            </p>
+
+                        </div>
+
+
+                        <div class="process-card">
+
+                            <span class="process-number">
+                                03
+                            </span>
+
+                            <h3>
+                                Réservez
+                            </h3>
+
+                            <p>
+                                Choisissez le nombre de places
+                                et confirmez votre réservation.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SEARCH -->
+
+                <div class="service-search-panel">
+
+                    <div class="service-search-heading">
+
+                        <div>
+
+                            <span class="section-label">
+                                🔎 RECHERCHER
+                            </span>
+
+                            <h2>
+                                Trouver un trajet entre villes
+                            </h2>
+
+                        </div>
+
+
+                        <p>
+                            Utilisez les filtres pour trouver le trajet
+                            qui correspond à votre déplacement.
+                        </p>
+
+                    </div>
+
+
+                    <form
+                        id="intercity-search-form"
+                        class="service-search-form">
+
+                        <div class="service-search-field">
+
+                            <label for="intercity-departure">
+                                📍 Départ
+                            </label>
+
+                            <input
+                                type="text"
+                                id="intercity-departure"
+                                placeholder="Ex. Sousse">
+
+                        </div>
+
+
+                        <div class="service-search-field">
+
+                            <label for="intercity-destination">
+                                🏁 Destination
+                            </label>
+
+                            <input
+                                type="text"
+                                id="intercity-destination"
+                                placeholder="Ex. Tunis">
+
+                        </div>
+
+
+                        <div class="service-search-field">
+
+                            <label for="intercity-date">
+                                📅 Date
+                            </label>
+
+                            <input
+                                type="date"
+                                id="intercity-date">
+
+                        </div>
+
+
+                        <button
+                            class="btn"
+                            type="submit">
+
+                            🔎 Rechercher
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+
+                <!-- AVAILABLE RIDES -->
+
+                <div
+                    id="available-rides"
+                    class="available-rides-section">
+
+                    <div class="rides-section-header">
+
+                        <div>
+
+                            <span class="section-label">
+                                TRAJETS DISPONIBLES
+                            </span>
+
+                            <h2>
+                                Choisissez votre prochain trajet
+                            </h2>
+
+                            <p>
+                                Comparez les horaires, les prix et
+                                les places disponibles avant de réserver.
+                            </p>
+
+                        </div>
+
+
+                        <span class="rides-live-badge">
+                            ● Disponibles maintenant
+                        </span>
+
+                    </div>
+
+
+                    <p id="rides-loading">
+                        Chargement des trajets disponibles...
+                    </p>
+
+
+                    <!--
+                        IMPORTANT:
+                        Supabase inserts the available rides here.
+                    -->
+
+                    <div
+                        id="rides-list"
+                        class="rides-grid">
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             SERVICE 2 — TRAJET QUOTIDIEN
+             ===================================================== -->
+
+        <section
+            id="quotidien-service"
+            class="section service-detail-section"
+            style="display:none;">
+
+            <div class="container">
+
+
+                <!-- INTRO -->
+
+                <div class="service-intro-grid">
+
+                    <div class="service-intro-image">
+
+                        <img
+                            src="images/222.png"
+                            alt="Trajet quotidien avec Coivi.tn">
+
+                    </div>
+
+
+                    <div class="service-intro-content">
+
+                        <span class="tag">
+                            ☀️ Trajet quotidien
+                        </span>
+
+                        <h2>
+                            Simplifiez vos déplacements de tous les jours
+                        </h2>
+
+                        <p>
+                            Le service <strong>Trajet quotidien</strong>
+                            est conçu pour vos déplacements réguliers :
+                            travail, université ou autres trajets
+                            effectués fréquemment.
+                        </p>
+
+                        <p>
+                            Trouvez des conducteurs qui suivent régulièrement
+                            le même itinéraire et partagez les frais
+                            de déplacement.
+                        </p>
+
+
+                        <div class="service-benefits">
+
+                            <span>✓ Trajets réguliers</span>
+
+                            <span>✓ Horaires adaptés</span>
+
+                            <span>✓ Prix économiques</span>
+
+                            <span>✓ Covoitureurs réguliers</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- COMMENT ÇA MARCHE -->
+
+                <div class="service-process">
+
+                    <div class="section-heading-left">
+
+                        <span class="section-label">
+                            VOTRE ROUTINE, SIMPLIFIÉE
+                        </span>
+
+                        <h2>
+                            Trouvez votre covoiturage quotidien
+                        </h2>
+
+                    </div>
+
+
+                    <div class="process-grid">
+
+                        <div class="process-card">
+
+                            <span class="process-number">
+                                01
+                            </span>
+
+                            <h3>
+                                Votre itinéraire
+                            </h3>
+
+                            <p>
+                                Indiquez votre trajet habituel entre
+                                votre domicile, travail ou université.
+                            </p>
+
+                        </div>
+
+
+                        <div class="process-card">
+
+                            <span class="process-number">
+                                02
+                            </span>
+
+                            <h3>
+                                Votre horaire
+                            </h3>
+
+                            <p>
+                                Choisissez l'horaire qui correspond
+                                à votre routine quotidienne.
+                            </p>
+
+                        </div>
+
+
+                        <div class="process-card">
+
+                            <span class="process-number">
+                                03
+                            </span>
+
+                            <h3>
+                                Réservez
+                            </h3>
+
+                            <p>
+                                Sélectionnez un trajet disponible
+                                et réservez votre place.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SEARCH -->
+
+                <div class="service-search-panel daily-search-panel">
+
+                    <div class="service-search-heading">
+
+                        <div>
+
+                            <span class="section-label">
+                                ☀️ TRAJET QUOTIDIEN
+                            </span>
+
+                            <h2>
+                                Rechercher un trajet régulier
+                            </h2>
+
+                        </div>
+
+
+                        <p>
+                            Recherchez un trajet adapté
+                            à votre emploi du temps.
+                        </p>
+
+                    </div>
+
+
+                    <form
+                        id="daily-search-form"
+                        class="service-search-form daily-search-form">
+
+                        <div class="service-search-field">
+
+                            <label for="daily-departure">
+                                📍 Départ
+                            </label>
+
+                            <input
+                                type="text"
+                                id="daily-departure"
+                                placeholder="Ex. Sahloul">
+
+                        </div>
+
+
+                        <div class="service-search-field">
+
+                            <label for="daily-destination">
+                                🏁 Destination
+                            </label>
+
+                            <input
+                                type="text"
+                                id="daily-destination"
+                                placeholder="Ex. Université de Sousse">
+
+                        </div>
+
+
+                        <div class="service-search-field">
+
+                            <label for="daily-time">
+                                🕐 Horaire souhaité
+                            </label>
+
+                            <input
+                                type="time"
+                                id="daily-time">
+
+                        </div>
+
+
+                        <div class="service-search-field">
+
+                            <label for="daily-frequency">
+                                🔁 Fréquence
+                            </label>
+
+                            <select id="daily-frequency">
+
+                                <option value="">
+                                    Toutes
+                                </option>
+
+                                <option value="weekdays">
+                                    Lundi – Vendredi
+                                </option>
+
+                                <option value="weekend">
+                                    Week-end
+                                </option>
+
+                                <option value="daily">
+                                    Tous les jours
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <button
+                            class="btn"
+                            type="submit">
+
+                            🔎 Rechercher
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+
+                <!--
+                    For now Service 2 has its own presentation.
+                    We will connect/filter daily rides separately
+                    after Service 1 is finished.
+                -->
+
+                <div class="available-rides-section">
+
+                    <div class="rides-section-header">
+
+                        <div>
+
+                            <span class="section-label">
+                                TRAJETS QUOTIDIENS
+                            </span>
+
+                            <h2>
+                                Trajets réguliers disponibles
+                            </h2>
+
+                            <p>
+                                Retrouvez ici les covoiturages adaptés
+                                à vos déplacements réguliers.
+                            </p>
+
+                        </div>
+
+
+                        <span class="rides-live-badge">
+                            ● Disponibles
+                        </span>
+
+                    </div>
+
+
+                    <div id="daily-rides-list" class="daily-rides-grid">
+
+    <div class="daily-empty-state">
+
+        <div class="daily-empty-icon">
+            🚗
+        </div>
+
+        <div>
+            <h3>Recherchez votre trajet quotidien</h3>
+
+            <p>
+                Indiquez votre départ, votre destination,
+                votre horaire et votre fréquence pour afficher
+                les trajets réguliers disponibles.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             SERVICE 3 — PROPOSER UN TRAJET
+             ===================================================== -->
+
+        <section
+            id="proposer-service"
+            class="section service-detail-section"
+            style="display:none;">
+
+            <div class="container detail">
+
+
+                <img
+                    src="images/444.png"
+                    alt="Formulaire Coivi.tn pour proposer un trajet">
+
+
+                <div>
+
+                    <span class="tag">
+                        ✨ Publication gratuite
+                    </span>
+
+
+                    <h2>
+                        Partagez vos places disponibles
+                    </h2>
+
+
+                    <p>
+                        Les conducteurs peuvent publier leurs trajets,
+                        indiquer les places disponibles et partager
+                        les frais du déplacement avec leurs passagers.
+                    </p>
+
+
+                    <!--
+                        IMPORTANT:
+                        These IDs are used by supabase-shop.js
+                    -->
+
+                    <form
+                        id="ride-form"
+                        class="form ride-publish-form">
+
+
+                        <label for="ride-departure">
+                            📍 Départ
+                        </label>
+
+                        <input
+                            type="text"
+                            id="ride-departure"
+                            placeholder="Ex. Sousse"
+                            required>
+
+
+                        <label for="ride-destination">
+                            🏁 Destination
+                        </label>
+
+                        <input
+                            type="text"
+                            id="ride-destination"
+                            placeholder="Ex. Tunis"
+                            required>
+
+
+                        <label for="ride-date">
+                            📅 Date et heure
+                        </label>
+
+                        <input
+                            type="datetime-local"
+                            id="ride-date"
+                            required>
+
+
+                        <label for="ride-seats">
+                            💺 Nombre de places disponibles
+                        </label>
+
+                        <input
+                            type="number"
+                            id="ride-seats"
+                            min="1"
+                            max="8"
+                            required>
+
+
+                        <label for="ride-price">
+                            💰 Prix par passager (DT)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="ride-price"
+                            min="0"
+                            step="0.01"
+                            required>
+
+
+                        <label for="ride-description">
+                            📝 Description
+                        </label>
+
+                        <textarea
+                            id="ride-description"
+                            placeholder="Informations supplémentaires sur votre trajet..."></textarea>
+
+
+                        <button
+                            class="btn"
+                            type="submit">
+
+                            Publier le trajet
+
+                        </button>
+
+                    </form>
+
+
+                    <p id="ride-message"></p>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <footer class="footer">
+
+        <div class="container footer-grid">
+
+
+            <div class="footer-brand">
+
+                <a
+                    class="brand footer-logo"
+                    href="index.html">
+
+                    <img
+                        src="images/WhatsApp Image 2026-10-11 at 20.14.49.jpeg"
+                        alt="Logo Coivi.tn">
+
+                    <span>
+                        Coivi.tn
+                    </span>
+
+                </a>
+
+
+                <p class="small">
+                    Partagez la route.<br>
+                    Partagez les frais.<br>
+                    Voyagez autrement.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Navigation
+                </strong>
+
+                <p class="small">
+
+                    <a href="service-detail.html?service=interville">
+                        Trouver un trajet
+                    </a>
+
+                    <br>
+
+                    <a href="service-detail.html?service=quotidien">
+                        Trajet quotidien
+                    </a>
+
+                    <br>
+
+                    <a href="service-detail.html?service=proposer">
+                        Proposer un trajet
+                    </a>
+
+                    <br>
+
+                    <a href="a-propos.html">
+                        À propos
+                    </a>
+
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Coivi.tn
+                </strong>
+
+                <p class="small">
+                    Sousse Khzema, Tunisie<br>
+                    73 000 000<br>
+                    support@coivi.com
+                </p>
+
+            </div>
+
+
+            <div class="footer-country">
+
+                <span>
+                    🇹🇳
+                </span>
+
+                <strong>
+                    Made for Tunisia
+                </strong>
+
+            </div>
+
+
+        </div>
+
+    </footer>
+
+
+    <!-- =====================================================
+         SUPABASE
+         ===================================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="supabase-client.js"></script>
+
+    <script src="supabase-shop.js"></script>
+
+    <script src="script.js"></script>
+
+
+    <!-- =====================================================
+         SERVICE CONTROLLER
+         ===================================================== -->
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const params =
+                new URLSearchParams(window.location.search);
+
+            const service =
+                params.get("service") || "proposer";
+
+// Highlight the correct navigation button
+const navServices = document.getElementById("nav-services");
+const navProposer = document.getElementById("nav-proposer");
+
+if (service === "proposer") {
+    navProposer.classList.add("active");
+    navServices.classList.remove("active");
+} else {
+    navServices.classList.add("active");
+    navProposer.classList.remove("active");
+}
+
+            const interville =
+                document.getElementById("interville-service");
+
+            const quotidien =
+                document.getElementById("quotidien-service");
+
+            const proposer =
+                document.getElementById("proposer-service");
+
+
+            const title =
+                document.getElementById("service-title");
+
+            const subtitle =
+                document.getElementById("service-subtitle");
+
+            const label =
+                document.getElementById("service-label");
+
+
+            /* Hide all services */
+
+            interville.style.display = "none";
+            quotidien.style.display = "none";
+            proposer.style.display = "none";
+
+
+            /* ==========================================
+               SERVICE 1
+               ========================================== */
+
+            if (service === "interville") {
+
+                interville.style.display = "block";
+
+                label.textContent =
+                    "🚗 SERVICE PASSAGER";
+
+                title.textContent =
+                    "Trajet entre villes";
+
+                subtitle.textContent =
+                    "Trouvez et réservez votre prochain trajet entre les villes tunisiennes.";
+
+                document.title =
+                    "Trajet entre villes | Coivi.tn";
+
+            }
+
+
+            /* ==========================================
+               SERVICE 2
+               ========================================== */
+
+            else if (service === "quotidien") {
+
+                quotidien.style.display = "block";
+
+                label.textContent =
+                    "☀️ SERVICE QUOTIDIEN";
+
+                title.textContent =
+                    "Trajet quotidien";
+
+                subtitle.textContent =
+                    "Votre covoiturage pour le travail, les études et vos déplacements réguliers.";
+
+                document.title =
+                    "Trajet quotidien | Coivi.tn";
+
+            }
+
+
+            /* ==========================================
+               SERVICE 3
+               ========================================== */
+
+            else {
+
+                proposer.style.display = "block";
+
+                label.textContent =
+                    "✨ SERVICE CONDUCTEUR";
+
+                title.textContent =
+                    "Proposer un trajet";
+
+                subtitle.textContent =
+                    "Publiez votre trajet et trouvez des passagers.";
+
+                document.title =
+                    "Proposer un trajet | Coivi.tn";
+
+            }
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>
